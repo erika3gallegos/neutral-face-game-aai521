@@ -1,5 +1,5 @@
 # Neutral Face Game
-A real-time webcam game where the player tries to keep a neutral face while the game tries to make them crack. A facial-expression detector watches each frame; any smile or other expression it catches costs the player points. The project compares a baseline expression model against an improved detector and wires the better one into a playable game.
+A real-time webcam game where the player tries to keep a neutral face while the game tries to make them crack. A facial expression detector watches each frame; any smile or other expression it catches costs the player points. The project compares a baseline expression model against an improved detector and wires the better one into a playable game.
 
 ---
 
