@@ -1,0 +1,7 @@
+# USD-inspired Streamlit native widget colors.
+[theme]
+base = "light"
+primaryColor = "#0074C8"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F7FD"
+textColor = "#183F65"

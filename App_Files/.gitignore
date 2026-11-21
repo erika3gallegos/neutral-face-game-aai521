@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.streamlit/secrets.toml
+*.mp4
+*.avi
+*.mov
+*.onnx
+*.pt
+*.pth
+*.keras
+.DS_Store
+
+# Optional downloaded MediaPipe model (not provided in the ZIP)
+models/*.task

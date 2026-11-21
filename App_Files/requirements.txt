@@ -1,0 +1,9 @@
+
+# Neutral Face Game - Python dependencies
+
+streamlit>=1.42,<2.0
+streamlit-webrtc>=0.78,<1.0
+mediapipe==0.10.35
+opencv-python-headless>=4.8,<5.0
+numpy>=1.26,<3.0
+Pillow>=11.0,<13.0
