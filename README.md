@@ -66,8 +66,17 @@ Caveats to check during data prep:
 - FER-2013 has known label noise and a heavy class imbalance (`disgust` is very small).
 - Image formats differ (GENKI color, variable size; FER 48×48 grayscale), so preprocessing must normalize both to one input format.
 
-### Splits
-Train / validation / test splits are defined once by Person 1 and saved to `data/splits/`. The test split is held out until the models and thresholds are frozen (Nov. 29).
+### Splits and cleaning (frozen Nov. 22)
+Built by `python -m src.data.prepare`; one row per image in `data/splits/genki4k.csv` and `data/splits/fer2013.csv`, with `split`, `keep` and `drop_reason` columns. Rows are never deleted, so every count is traceable.
+
+| | GENKI-4K | FER-2013 |
+|---|---|---|
+| Split rule | stratified random 70/15/15, seed 42 | official Usage (Training / PublicTest / PrivateTest), read from the Kaggle file names |
+| Kept train / val / test | 2,787 / 599 / 600 | 26,903 / 3,507 / 3,557 |
+| Removed | 14 near-duplicates | 1,906 near-duplicates (150 with conflicting labels), 14 blank images |
+| Face crop | OpenCV Haar, largest face, 10% margin (118 center-crop fallbacks flagged) | already cropped |
+
+Every image becomes a 64×64 grayscale, histogram-equalized crop (`src/data/face.py`). The webcam path must call the same `preprocess_face` so the model sees the same input at game time. The test split stays untouched until models and thresholds are frozen (Nov. 29).
 
 ---
 
@@ -170,28 +179,44 @@ kaggle datasets download -d msambare/fer2013 -p data/raw/fer2013 --unzip
 
 In Colab, upload `kaggle.json` and run the same commands with a `!` prefix.
 
+Then check the download before running anything else:
+
+```bash
+python -m src.data.check_raw
+```
+
+It prints the folder layout it found and compares counts with the published sizes (GENKI 4,000 images, 2,162 smiles; FER 35,887 images, 28,709 / 3,589 / 3,589). The Kaggle FER copy keeps the original usage in each file name (`Training_*`, `PublicTest_*`, `PrivateTest_*`), so the official split is recovered from it. Extra folder levels from unzipping (e.g. `archive/`) are fine.
+
 ---
 
 ## Running the project
 
 ```bash
-# 1. Preprocess both datasets and build splits
+# 0. Check the Kaggle downloads
+python -m src.data.check_raw
+
+# 1. Preprocess both datasets and build splits (~1.5 min)
 python -m src.data.prepare
 
-# 2. Train the baseline
+# 2. Train, freeze and test the baseline (~3.5 min)
 python -m src.models.train --model baseline
 
-# 3. Train the improved detector
+# 3. Train the improved detector (Person 2)
 python -m src.models.train --model improved
 
-# 4. Evaluate both on the held-out test split
+# 4. Evaluate both on the held-out test split (Person 2)
 python -m src.models.evaluate --models baseline improved
 
 # 5. Play
-python -m src.game.main --model improved
+cd app && python -m streamlit run streamlit_app.py
+
+# Tests
+python -m pytest tests -q
 ```
 
-Commands are placeholders until each module lands; owners update this section as code is merged.
+Steps 1, 2 and the tests are live. Notebooks `01_data_prep` and `02_baseline` run the same code and show the report figures.
+
+Steps 3 and 4 are placeholders until those modules land.
 
 ---
 
