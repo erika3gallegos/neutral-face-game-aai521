@@ -72,8 +72,8 @@ Built by `python -m src.data.prepare`; one row per image in `data/splits/genki4k
 | | GENKI-4K | FER-2013 |
 |---|---|---|
 | Split rule | stratified random 70/15/15, seed 42 | official Usage (Training / PublicTest / PrivateTest), read from the Kaggle file names |
-| Kept train / val / test | 2,787 / 599 / 600 | 26,903 / 3,507 / 3,557 |
-| Removed | 14 near-duplicates | 1,906 near-duplicates (150 with conflicting labels), 14 blank images |
+| Kept train / val / test | 2,787 / 599 / 600 | 26,906 / 3,507 / 3,557 |
+| Removed | 14 near-duplicates | 1,903 near-duplicates (150 with conflicting labels), 14 blank images |
 | Face crop | OpenCV Haar, largest face, 10% margin (118 center-crop fallbacks flagged) | already cropped |
 
 Every image becomes a 64×64 grayscale, histogram-equalized crop (`src/data/face.py`). The webcam path must call the same `preprocess_face` so the model sees the same input at game time. The test split stays untouched until models and thresholds are frozen (Nov. 29).

@@ -1,0 +1,146 @@
+{
+  "genki4k": {
+    "source": {
+      "layout": "label_folders",
+      "head_pose": false
+    },
+    "n_images": 4000,
+    "n_kept": 3986,
+    "drop_reasons": {
+      "duplicate_of_heldout_split": 8,
+      "duplicate_within_split": 6
+    },
+    "split_sizes": {
+      "train": 2787,
+      "val": 599,
+      "test": 600
+    },
+    "raw_label_counts_all": {
+      "smile": 2162,
+      "non_smile": 1838
+    },
+    "raw_label_by_split": {
+      "train": {
+        "smile": 1505,
+        "non_smile": 1282
+      },
+      "val": {
+        "smile": 325,
+        "non_smile": 274
+      },
+      "test": {
+        "smile": 324,
+        "non_smile": 276
+      }
+    },
+    "game_label_by_split": {
+      "test": {
+        "neutral": 276,
+        "expression": 324
+      },
+      "train": {
+        "neutral": 1282,
+        "expression": 1505
+      },
+      "val": {
+        "neutral": 274,
+        "expression": 325
+      }
+    },
+    "face_method": {
+      "haar_default": 3840,
+      "center": 118,
+      "haar_alt2": 42
+    },
+    "orig_size": {
+      "h_min": 120,
+      "h_median": 192.0,
+      "h_max": 480,
+      "w_min": 110,
+      "w_median": 180.0,
+      "w_max": 972
+    }
+  },
+  "fer2013": {
+    "source": {
+      "layout": "kaggle_train_test",
+      "official_split": true
+    },
+    "n_images": 35887,
+    "n_kept": 33970,
+    "drop_reasons": {
+      "duplicate_within_split": 1058,
+      "duplicate_of_heldout_split": 695,
+      "duplicate_conflicting_label": 150,
+      "blank_or_uniform": 14
+    },
+    "split_sizes": {
+      "train": 26906,
+      "val": 3507,
+      "test": 3557
+    },
+    "raw_label_counts_all": {
+      "happy": 8989,
+      "neutral": 6198,
+      "sad": 6077,
+      "fear": 5121,
+      "angry": 4953,
+      "surprise": 4002,
+      "disgust": 547
+    },
+    "raw_label_by_split": {
+      "train": {
+        "happy": 7030,
+        "neutral": 4821,
+        "sad": 4675,
+        "fear": 3795,
+        "angry": 3775,
+        "surprise": 2460,
+        "disgust": 350
+      },
+      "val": {
+        "happy": 887,
+        "sad": 646,
+        "neutral": 599,
+        "fear": 484,
+        "angry": 457,
+        "surprise": 381,
+        "disgust": 53
+      },
+      "test": {
+        "happy": 876,
+        "neutral": 625,
+        "sad": 589,
+        "fear": 521,
+        "angry": 484,
+        "surprise": 407,
+        "disgust": 55
+      }
+    },
+    "game_label_by_split": {
+      "test": {
+        "neutral": 625,
+        "expression": 2932
+      },
+      "train": {
+        "neutral": 4821,
+        "expression": 22085
+      },
+      "val": {
+        "neutral": 599,
+        "expression": 2908
+      }
+    },
+    "face_method": {
+      "precropped": 35887
+    },
+    "orig_size": {
+      "h_min": 48,
+      "h_median": 48.0,
+      "h_max": 48,
+      "w_min": 48,
+      "w_median": 48.0,
+      "w_max": 48
+    }
+  }
+}
