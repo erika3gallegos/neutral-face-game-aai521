@@ -1,0 +1,57 @@
+{
+  "config": {
+    "hog": {
+      "orientations": 9,
+      "pixels_per_cell": 8,
+      "cells_per_block": 2
+    },
+    "C": 0.001,
+    "flip_augment": true,
+    "threshold": 0.5629960298538208,
+    "task": "fer_expression"
+  },
+  "frozen_at": "2026-11-22T22:42:31",
+  "seed": 42,
+  "split_file_md5": "a7f181a148e3",
+  "train_size": 26906,
+  "val_size": 3507,
+  "alt_threshold_fpr5": 0.7567628622055054,
+  "val_metrics": {
+    "default_threshold": {
+      "n": 3507,
+      "threshold": 0.563,
+      "accuracy": 0.6091,
+      "balanced_accuracy": 0.6668,
+      "precision": 0.9197,
+      "recall": 0.5791,
+      "f1": 0.7107,
+      "false_alarm_rate": 0.2454,
+      "roc_auc": 0.7319,
+      "pr_auc": 0.9251,
+      "confusion": {
+        "tn": 452,
+        "fp": 147,
+        "fn": 1224,
+        "tp": 1684
+      }
+    },
+    "strict_threshold": {
+      "n": 3507,
+      "threshold": 0.7568,
+      "accuracy": 0.3713,
+      "balanced_accuracy": 0.6017,
+      "precision": 0.9619,
+      "recall": 0.2517,
+      "f1": 0.399,
+      "false_alarm_rate": 0.0484,
+      "roc_auc": 0.7319,
+      "pr_auc": 0.9251,
+      "confusion": {
+        "tn": 570,
+        "fp": 29,
+        "fn": 2176,
+        "tp": 732
+      }
+    }
+  }
+}
